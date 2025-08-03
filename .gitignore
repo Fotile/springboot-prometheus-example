@@ -25,6 +25,6 @@ replay_pid*
 
 .gitignore
 .idea/
-.iml
+*.iml
 target/
 **/target/*
