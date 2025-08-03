@@ -33,8 +33,8 @@ management:
         ignore-trailing-slash: true
     distribution:
       # 直方图 分位值(不建议使用)
-#      percentiles-histogram:
-#        casd: true
+      #      percentiles-histogram:
+      #        casd: true
       percentiles:
         # 指定这个指标  http.server.requests  对应的分位值
         http.server.requests: 0.5,0.9,0.95,0.99
@@ -44,27 +44,29 @@ management:
       prometheus:
         enabled: true
         # 使用push-gateway 即主动推送的方式
-#        pushgateway:
-#          # PushGateway 服务器地址（必填）
-#          base-url: http://localhost:9091
-#          # 启用 PushGateway 导出
-#          enabled: false
-#          # 推送频率（默认1分钟）
-#          push-rate: 1m
-#          # 推送的指标标签（会附加到所有指标上） 标识应用名称，便于 Prometheus 分类
-#          job: ${spring.application.name}
-#          # 应用关闭时是否推送最终指标
-#          shutdown-operation: push
-#          # 可添加自定义标签（如实例 ID、环境等），用于区分不同实例
-#          grouping-key:
-#            instance: ${HOSTNAME:unknown}
+    #        pushgateway:
+    #          # PushGateway 服务器地址（必填）
+    #          base-url: http://localhost:9091
+    #          # 启用 PushGateway 导出
+    #          enabled: false
+    #          # 推送频率（默认1分钟）
+    #          push-rate: 1m
+    #          # 推送的指标标签（会附加到所有指标上） 标识应用名称，便于 Prometheus 分类
+    #          job: ${spring.application.name}
+    #          # 应用关闭时是否推送最终指标
+    #          shutdown-operation: push
+    #          # 可添加自定义标签（如实例 ID、环境等），用于区分不同实例
+    #          grouping-key:
+    #            instance: ${HOSTNAME:unknown}
     enable:
       jvm: true             # 明确启用 JVM 指标
       http: true            # 明确启用 HTTP 指标
       system: false         # 禁用系统指标
       logback: false        # 禁用 Logback 指标
-      tomcat: true         # 明确启用 Tomcat 指标
-      hikaricp: true       # 明确启用 HikariCP 指标
+      tomcat: true          # 明确启用 Tomcat 指标
+      hikaricp: true        # 明确启用 HikariCP 指标
+      process: true         # 明确启用 process 指标
+      executor: true        # 明确启用 executor 指标 线程池相关指标
 
 
 
