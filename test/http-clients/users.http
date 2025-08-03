@@ -1,0 +1,8 @@
+### add
+GET localhost:8087/api/user/124
+
+###
+POST localhost:8087/api/user
+
+###
+PUT localhost:8087/api/user
