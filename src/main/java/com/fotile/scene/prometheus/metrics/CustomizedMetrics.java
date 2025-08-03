@@ -2,8 +2,9 @@ package com.fotile.scene.prometheus.metrics;
 
 public enum CustomizedMetrics {
 
-    USER("spe.user")
+    USER("spe.user"),
 
+    ROCKET_MQ_PRODUCER_MESSAGE("rocketmq.producer.message"),
 
     ;
 

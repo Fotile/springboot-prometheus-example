@@ -83,3 +83,25 @@ management:
 application:
   management:
     ignore-uris: /actuator,/health
+  rocketmq.producer:
+    topic1: my-topic
+
+rocketmq:
+  name-server: localhost:9876
+  consumer:
+    access-key:
+    secret-key:
+    topic: ABC
+    pull-batch-size: 10
+
+
+  producer:
+    access-key:
+    secret-key:
+    group: MQ_${spring.application.name}
+    send-message-timeout: 3000 # 发送超时时间
+    retry-times-when-send-failed: 2
+    retry-times-when-send-async-failed: 2
+    max-message-size: 4194304 # 最大消息大小（字节），默认 4MB
+    compress-message-body-threshold: 4096 # 消息压缩阈值（字节），默认 4KB
+    retry-next-server: true # 发送失败，是否尝试用另一个broker进行重试,默认false

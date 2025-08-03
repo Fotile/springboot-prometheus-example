@@ -3,7 +3,6 @@ package com.fotile.scene.prometheus.metrics;
 import com.fotile.scene.threadpool.ThreadPoolFactory;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
@@ -33,6 +32,7 @@ public class MeterGaugeConfiguration {
 
 
     }
+
 
 
 }
