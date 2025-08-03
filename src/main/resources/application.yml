@@ -19,8 +19,8 @@ management:
     web:
       # 以 web.exposure 的形式暴露的端点, 包含那些，排除那些
       exposure:
-        include: prometheus,health
-        exclude: info,metrics
+        include: prometheus,health,metrics
+        exclude: info
       # 自定义metrics 的暴露地址
       base-path: /actuator
   metrics:

@@ -23,15 +23,6 @@ import java.util.function.Predicate;
 @Configuration
 public class MeterFilterConfiguration {
 
-    private final MeterRegistry meterRegistry;
-
-    private final ConcurrentMap<String, Counter> customerCounter;
-
-    public MeterFilterConfiguration(MeterRegistry meterRegistry) {
-        this.meterRegistry = meterRegistry;
-        this.customerCounter = new ConcurrentHashMap<>();
-    }
-
     @Bean
     public MeterFilter excludeNonBusinessUris(@Value("${application.management.ignore-uris}") List<String> ignoreMeterUris) {
         if (CollectionUtils.isEmpty(ignoreMeterUris)) {
@@ -54,46 +45,6 @@ public class MeterFilterConfiguration {
             }
         }
         return false;
-    }
-
-    @Around("@annotation(com.fotile.scene.prometheus.metrics.CounterMeta)")
-    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-        // 获取方法上的注解
-        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
-        Method method = signature.getMethod();
-        CounterMeta metricCount = method.getAnnotation(CounterMeta.class);
-        // 原方法执行结果
-        Object result;
-        try {
-            // 执行目标方法
-            result = joinPoint.proceed();
-        } finally {
-            // 记录计数器
-            recordMetrics(metricCount);
-        }
-
-        return result;
-    }
-
-
-    /**
-     * 记录指标指标计数
-     */
-    private void recordMetrics(CounterMeta metricCount) {
-        String[] tags = metricCount.tags();
-        StringBuilder sb = new StringBuilder(metricCount.value().getTag());
-        for (String tg : tags) {
-            sb.append(":").append(tg);
-        }
-        String cacheKey = sb.toString();
-        Counter theCounter = customerCounter.computeIfAbsent(
-                cacheKey, k -> Counter.builder(metricCount.value().name())
-                        .tags(tags)
-                        .description(metricCount.description())
-                        .register(meterRegistry)
-        );
-        theCounter.increment();
-
     }
 
 

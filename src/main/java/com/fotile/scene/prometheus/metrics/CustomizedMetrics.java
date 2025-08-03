@@ -2,19 +2,19 @@ package com.fotile.scene.prometheus.metrics;
 
 public enum CustomizedMetrics {
 
-    ADD_USER("base.user.count")
+    ADD_USER("spe.user.add")
 
 
     ;
 
-    private final String tag;
+    private final String meterId;
 
-    CustomizedMetrics(String tag) {
-        this.tag = tag;
+    CustomizedMetrics(String meterId) {
+        this.meterId = meterId;
     }
 
-    public String getTag() {
-        return tag;
+    public String getMeterId() {
+        return meterId;
     }
 }
 
