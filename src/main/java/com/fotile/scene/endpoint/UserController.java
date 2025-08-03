@@ -30,8 +30,8 @@ public class UserController {
 
     @PutMapping()
     public void updateUserName() {
-
-        throw new RuntimeException("嘿嘿和");
+        userService.updateUser();
+        throw new RuntimeException("m3  good!!!!");
     }
 
 

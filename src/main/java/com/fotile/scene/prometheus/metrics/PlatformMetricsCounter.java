@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(value = ElementType.METHOD)
 @Documented
-public @interface CounterMeta {
+public @interface PlatformMetricsCounter {
 
     CustomizedMetrics value();
 

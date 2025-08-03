@@ -2,7 +2,7 @@ package com.fotile.scene.prometheus.metrics;
 
 public enum CustomizedMetrics {
 
-    ADD_USER("spe.user.add")
+    USER("spe.user")
 
 
     ;
